@@ -1,0 +1,4 @@
+hardstatus alwayslastline " [ %H ] %{wb} %c:%s | %d.%m.%Y %{wr} Load: %l %{wb} %w | Escape Key: z "
+caption splitonly
+escape ^zz
+termcapinfo xterm ti@:te@
