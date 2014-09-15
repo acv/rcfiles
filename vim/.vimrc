@@ -2,14 +2,18 @@ set nocompatible
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-set ai
+set tabstop=4
 syntax on
+set ai
+set cindent
 colorscheme desert
-set number
+if $_ != '/usr/bin/vi'
+  set relativenumber
+endif
 set guioptions-=T
-nmap <F1> <nop>
-imap <F1> <nop>
-map <F1> <nop>
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 set laststatus=2
 set showcmd
 set noerrorbells
@@ -17,9 +21,20 @@ set visualbell
 set hlsearch
 set bs=2
 
+" Disable middle button paste
+nnoremap <MiddleMouse> <Nop>
+nnoremap <2-MiddleMouse> <Nop>
+nnoremap <3-MiddleMouse> <Nop>
+nnoremap <4-MiddleMouse> <Nop>
+
+inoremap <MiddleMouse> <Nop>
+inoremap <2-MiddleMouse> <Nop>
+inoremap <3-MiddleMouse> <Nop>
+inoremap <4-MiddleMouse> <Nop>
+
 let mapleader = ","
 " toggle between number and relative number on ,l
-nnoremap <leader>; :call ToggleRelativeAbsoluteNumber()<CR>
+nnoremap <leader>l :call ToggleRelativeAbsoluteNumber()<CR>
 function! ToggleRelativeAbsoluteNumber()
   if &number
     set relativenumber
@@ -27,7 +42,6 @@ function! ToggleRelativeAbsoluteNumber()
     set number
   endif
 endfunction
-
 
 if !exists("*TagInStatusLine")
   function TagInStatusLine()
@@ -78,12 +92,10 @@ set statusline+=%P              " - position in buffer as percentage
 highlight LineNr ctermfg=grey ctermbg=black guibg=black guifg=MediumPurple
 highlight Normal guibg=grey5
 
-if version >= 703
-  set relativenumber
-endif
-
-if $DISPLAY != '' && has('gui')
-  gui
+if has("gui_running")
+    set transparency=5
+    set antialias
+    set guifont=Monaco:h12.00
 endif
 
 " TagList Plugin Configuration
@@ -127,3 +139,8 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 "au Syntax * RainbowParenthesesLoadChevron
 
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+inoremap <C-space> <C-x><C-o>
+filetype plugin indent on
+
+au BufNewFile,BufRead *.yml set filetype=ansible

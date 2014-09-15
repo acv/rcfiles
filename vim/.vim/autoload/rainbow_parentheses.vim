@@ -62,11 +62,11 @@ func! rainbow_parentheses#clear()
 endfunc
 
 func! rainbow_parentheses#toggle()
-  if exists('s:active') && s:active
-    cal rainbow_parentheses#clear()
-  else
-    cal rainbow_parentheses#activate()
-  endif
+	if exists('s:active') && s:active
+		cal rainbow_parentheses#clear()
+	else
+		cal rainbow_parentheses#activate()
+	endif
 endfunc
 
 func! s:cluster()

@@ -1,3 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/home/acarmel/repos/pacs-tools/RIS/tools/Hl7Transform/build/InputFiles'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/acv/repos/file-dissect/wxPluginLoader'
+let g:netrw_dirhist_2='/Users/acv/repos/wiggle/tests/linux/raid5build'
+let g:netrw_dirhist_3='/Users/acv/Library/Widgets/rpnCalc.wdgt'
